@@ -41,7 +41,12 @@
 		"moduleDetection": "force",
 		"skipLibCheck": true,
 		"moduleResolution": "bundler",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		// Permite escribir imports con la extensión .ts en el código fuente.
+		// rewriteRelativeImportExtensions los reescribe a .js al compilar,
+		// para que el output de dist/ funcione con Node ESM.
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true
 	},
 	// Files to compile (everything under src, per rootDir)
 	"include": ["src/**/*.ts"],

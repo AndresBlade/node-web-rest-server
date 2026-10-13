@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { db } from "../../prisma/db";
-import type { CreateTodoInput } from "../../domain/entity/Todo";
-import type { UpdateTodoInput } from "../../domain/dto/todo/update-todo.dto";
+import { db } from "../../prisma/db.ts";
+import type { CreateTodoInput } from "../../domain/entity/Todo.ts";
+import type { UpdateTodoInput } from "../../domain/dto/todo/update-todo.dto.ts";
 
 type Todo = {
     id: number;

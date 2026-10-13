@@ -1,6 +1,6 @@
-import { Server } from "./presentation/server.js"
-import { envs } from './config/envs.js';
-import { AppRoutes } from "./presentation/routes.js";
+import { Server } from "./presentation/server.ts"
+import { envs } from './config/envs.ts';
+import { AppRoutes } from "./presentation/routes.ts";
 
 (() => {
     main()

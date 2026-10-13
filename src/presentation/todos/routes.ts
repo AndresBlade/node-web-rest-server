@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { TodoController } from "./controller.js";
-import { validateBody } from "../../middleware/validateBody.js";
-import { createTodoSchema } from "../../domain/dto/todo/create-todo.dto.js";
-import { updateTodoSchema } from "../../domain/dto/todo/update-todo.dto.js";
+import { TodoController } from "./controller.ts";
+import { validateBody } from "../../middleware/validateBody.ts";
+import { createTodoSchema } from "../../domain/dto/todo/create-todo.dto.ts";
+import { updateTodoSchema } from "../../domain/dto/todo/update-todo.dto.ts";
 
 export class TodoRoutes {
     static get routes(): Router {

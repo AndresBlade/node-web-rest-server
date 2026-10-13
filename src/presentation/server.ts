@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
-import { db } from '../prisma/db';
+import { db } from '../prisma/db.ts';
 
 interface Options {
     PORT: number;

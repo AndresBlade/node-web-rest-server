@@ -1,0 +1,45 @@
+[
+  {
+    "id": "alterNullability.dropNotNull.Todo.completedAt",
+    "label": "Drop NOT NULL on \"Todo\".\"completedAt\"",
+    "operationClass": "widening",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "column",
+        "name": "completedAt",
+        "table": "Todo"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure column \"completedAt\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"information_schema\".\"columns\" WHERE (\"table_schema\" = $1 AND \"table_name\" = $2 AND \"column_name\" = $3)) AS \"result\"",
+        "params": [
+          "public",
+          "Todo",
+          "completedAt"
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "drop NOT NULL on \"completedAt\"",
+        "sql": "ALTER TABLE \"public\".\"Todo\" ALTER COLUMN \"completedAt\" DROP NOT NULL"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify column \"completedAt\" is nullable",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"information_schema\".\"columns\" WHERE (\"table_schema\" = $1 AND \"table_name\" = $2 AND \"column_name\" = $3 AND \"is_nullable\" = $4)) AS \"result\"",
+        "params": [
+          "public",
+          "Todo",
+          "completedAt",
+          "YES"
+        ]
+      }
+    ]
+  }
+]

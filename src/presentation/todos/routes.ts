@@ -1,5 +1,8 @@
 import { Router } from "express";
 import { TodoController } from "./controller.js";
+import { validateBody } from "../../middleware/validateBody.js";
+import { createTodoSchema } from "../../domain/dto/todo/create-todo.dto.js";
+import { updateTodoSchema } from "../../domain/dto/todo/update-todo.dto.js";
 
 export class TodoRoutes {
     static get routes(): Router {
@@ -8,8 +11,8 @@ export class TodoRoutes {
 
         router.get('/', todoController.getTodos);
         router.get('/:id', todoController.getTodoById);
-        router.post('/', todoController.createTodo);
-        router.put('/:id', todoController.updateTodo);
+        router.post('/', validateBody(createTodoSchema), todoController.createTodo);
+        router.patch('/:id', validateBody(updateTodoSchema), todoController.updateTodo);
         router.delete('/:id', todoController.deleteTodo);
 
         return router;

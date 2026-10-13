@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
+import { db } from '../prisma/db';
 
 interface Options {
     PORT: number;
@@ -26,6 +27,8 @@ export class Server {
         this.app.use(express.urlencoded({ extended: true }));
         //Routes
         this.app.use(this.routes)
+
+        await db.connect();
 
         this.app.listen(this.PORT, () => {
             console.log(`Server running on port ${this.PORT}`)

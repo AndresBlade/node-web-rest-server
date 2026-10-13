@@ -7,11 +7,11 @@
 
 		// Environment Settings
 		// See also https://aka.ms/tsconfig/module
-		"module": "nodenext",
+		"module": "preserve",
 		"target": "esnext",
-		"types": ["node"],
 		// For nodejs:
-		// "lib": ["esnext"],
+		"lib": ["esnext"],
+		"types": ["node"],
 		// "types": ["node"],
 		// and npm install -D @types/node
 
@@ -22,7 +22,7 @@
 
 		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
+		"exactOptionalPropertyTypes": false,
 
 		// Style Options
 		// "noImplicitReturns": true,
@@ -39,6 +39,11 @@
 		"isolatedModules": true,
 		"noUncheckedSideEffectImports": true,
 		"moduleDetection": "force",
-		"skipLibCheck": true
-	}
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true
+	},
+	// Files to compile (everything under src, per rootDir)
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist"]
 }
